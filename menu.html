@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Menu | FoodieHub</title>
+    <title>Menu | FoodieHub</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,65 +14,49 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- CSS Files -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-    <!-- Cart Icon -->
-    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
-        <a href="cart.html" class="cart-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cartCount">0</span>
-        </a>
-    </div>
+    <!-- Simple Header -->
+    <header class="header">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding:20px 0;">
+            <a href="index.html" class="logo">FoodieHub</a>
 
+            <!-- Cart Icon -->
+            <a href="cart.html" class="cart-icon" style="position:relative; font-size:24px; color:#000; text-decoration:none;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cartCount"
+                      style="position:absolute; top:-10px; right:-12px; background:#e63946; color:#fff; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">
+                    0
+                </span>
+            </a>
+        </div>
+    </header>
     <!-- Page Hero -->
-    <section class="page-hero">
+    <section class="page-hero" style="padding:80px 0; text-align:center; background:#f8f9fa;">
         <div class="container">
             <h1>Our Delicious Menu</h1>
-            <p>Explore our most loved dishes.</p>
+            <p>Choose your favorite dishes and add them to your cart.</p>
         </div>
     </section>
-
-    <!-- Menu Section -->
-    <section class="menu section">
+     <!-- Menu Section -->
+    <section class="menu section" style="padding:80px 0;">
         <div class="container">
+            <h2 class="section-title">Popular Dishes</h2>
 
-            <p class="section-subtitle">Food Menu</p>
-            <h2 class="section-title">Popular Categories</h2>
-
-            <!-- Search and Filter -->
-            <div class="menu-controls">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search food..."
-                >
-
-                <div class="filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="pizza">Pizza</button>
-                    <button class="filter-btn" data-filter="burger">Burger</button>
-                    <button class="filter-btn" data-filter="pasta">Pasta</button>
-                </div>
-            </div>
-
-            <!-- Menu Grid -->
             <div class="menu-grid">
 
                 <!-- Pizza -->
-                <div class="menu-card" data-category="pizza">
+                <div class="menu-card">
                     <img src="images/pizza.jpg" alt="Margherita Pizza">
-
                     <div class="menu-card-content">
                         <h3>Margherita Pizza</h3>
                         <p>Classic cheese pizza with fresh basil.</p>
-
                         <div class="menu-footer">
                             <span>₹299</span>
-
                             <button
                                 class="btn btn-small add-to-cart"
                                 data-name="Margherita Pizza"
@@ -83,18 +66,14 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Burger -->
-                <div class="menu-card" data-category="burger">
+                 <!-- Burger -->
+                <div class="menu-card">
                     <img src="images/burger.jpg" alt="Cheese Burger">
-
                     <div class="menu-card-content">
                         <h3>Cheese Burger</h3>
                         <p>Juicy burger with cheddar cheese.</p>
-
                         <div class="menu-footer">
                             <span>₹249</span>
-
                             <button
                                 class="btn btn-small add-to-cart"
                                 data-name="Cheese Burger"
@@ -104,18 +83,14 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Pasta -->
-                <div class="menu-card" data-category="pasta">
+                  <!-- Pasta -->
+                <div class="menu-card">
                     <img src="images/pasta.jpg" alt="Creamy Pasta">
-
                     <div class="menu-card-content">
                         <h3>Creamy Pasta</h3>
                         <p>Italian pasta in rich white sauce.</p>
-
                         <div class="menu-footer">
                             <span>₹349</span>
-
                             <button
                                 class="btn btn-small add-to-cart"
                                 data-name="Creamy Pasta"
@@ -129,11 +104,10 @@
             </div>
         </div>
     </section>
-
-    <!-- Toast Container -->
+      <!-- Toast Container (Optional) -->
     <div id="toast" class="toast"></div>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 </html>
