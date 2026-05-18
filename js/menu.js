@@ -53,16 +53,8 @@ addToCartButtons.forEach(button => {
             quantity: 1
         };
 
-        // Check if item already exists
-        const existingItem = cart.find(
-            cartItem => cartItem.name === item.name
-        );
-
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push(item);
-        }
+        // Always add a new item to cart
+        cart.push(item);
 
         // Save to localStorage
         saveCart();
