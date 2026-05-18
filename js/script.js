@@ -99,55 +99,6 @@ function showToast(message, type = 'success') {
         toast.className = 'toast';
     }, 3000);
 }
-
-// ===============================
-// ADD TO CART FUNCTIONALITY
-// ===============================
-
-// Load cart from LocalStorage
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Select all Add to Cart buttons
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-// Update cart count
-function updateCartCount() {
-    const cartCount = document.getElementById('cartCount');
-
-    if (cartCount) {
-        cartCount.textContent = cart.length;
-    }
-}
-
-// Save cart
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-}
-
-// Add item to cart
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        const item = {
-            name: this.dataset.name,
-            price: Number(this.dataset.price)
-        };
-
-        cart.push(item);
-        saveCart();
-
-        if (typeof showToast === 'function') {
-            showToast(`${item.name} added to cart!`);
-        } else {
-            alert(`${item.name} added to cart!`);
-        }
-    });
-});
-
-// Initialize cart count
-updateCartCount();
-
-
 // ===============================
 // SEARCH + FILTER FUNCTIONALITY
 // ===============================
