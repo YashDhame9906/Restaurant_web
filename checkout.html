@@ -24,6 +24,15 @@
 
             <form id="checkoutForm">
                 <div class="form-group">
+    <label for="email">Email Address</label>
+    <input
+        type="email"
+        id="email"
+        required
+        placeholder="Enter your email"
+    >
+</div>
+                <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" required>
                 </div>
@@ -57,6 +66,17 @@
         </div>
     </div>
 
-    <script src="js/checkout.js"></script>
+    <!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- Initialize EmailJS -->
+<script>
+    emailjs.init({
+        publicKey: "kmeR470t-k3eQpZHl"
+    });
+</script>
+
+<!-- Your Checkout JS -->
+<script src="js/checkout.js"></script>
 </body>
 </html>
