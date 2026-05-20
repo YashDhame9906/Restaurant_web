@@ -1,4 +1,7 @@
 #  Cafe-Ruu - Online Restaurant Website
+---
+🔗 Live Demo: https://caferuu.netlify.app/
+---
 
 Cafe-Ruu is a modern and responsive restaurant website where users can:
 
