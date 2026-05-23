@@ -1,53 +1,47 @@
-// Get elements
-const bookingForm = document.getElementById('bookingForm');
-const dateInput = document.getElementById('date');
+const bookingForm = document.getElementById("bookingForm");
+const toast = document.getElementById("toast");
 
-// Set minimum date to today
-if (dateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
-}
+bookingForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Toast notification function
-function showToast(message, type = 'success') {
-    const toast = document.getElementById('toast');
+    // Get form values
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const guests = document.getElementById("guests").value;
 
-    if (!toast) return;
+    // Cafe WhatsApp Number
+    // Replace with your WhatsApp number
+    const cafeNumber = "919561516378";
 
-    toast.textContent = message;
-    toast.className = `toast show ${type}`;
+    // WhatsApp Message
+    const message = ` *New Table Booking* %0A%0A
+    Name: ${name}%0A
+    Phone: ${phone}%0A
+    Date: ${date}%0A
+    Time: ${time}%0A
+    Guests: ${guests}`;
+
+    // WhatsApp URL
+    const whatsappURL = `https://wa.me/${cafeNumber}?text=${message}`;
+
+    // Open WhatsApp
+    window.open(whatsappURL, "_blank");
+
+    // Toast Message
+    showToast("Booking request sent successfully!");
+
+    // Reset Form
+    bookingForm.reset();
+});
+
+// Toast Function
+function showToast(message) {
+    toast.innerText = message;
+    toast.classList.add("show");
 
     setTimeout(() => {
-        toast.className = 'toast';
+        toast.classList.remove("show");
     }, 3000);
-}
-
-// Handle form submit
-if (bookingForm) {
-    bookingForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const bookingData = {
-            name: document.getElementById('name').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            date: document.getElementById('date').value,
-            time: document.getElementById('time').value,
-            guests: document.getElementById('guests').value,
-            bookedAt: new Date().toLocaleString()
-        };
-
-        // Save booking details
-        localStorage.setItem('lastBooking', JSON.stringify(bookingData));
-
-        // Show success message
-        showToast('Table booked successfully!');
-
-        // Reset form
-        bookingForm.reset();
-
-        // Redirect to home page after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 3000);
-    });
 }
