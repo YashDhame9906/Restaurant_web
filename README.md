@@ -1,5 +1,6 @@
 #  Cafe-Ruu - Online Restaurant Website
 ---
+![](https://komarev.com/ghpvc/?username=YashDhame9906)
 🔗 Live Demo: https://caferuu.netlify.app/
 ---
 
