@@ -151,3 +151,213 @@ filterButtons.forEach(button => {
 
 // Initial filter call
 filterMenu();
+// ================= MEMORY GAME =================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const startBtn =
+        document.getElementById("startGameBtn");
+
+    const closeBtn =
+        document.getElementById("closeGameBtn");
+
+    const modal =
+        document.getElementById("gameModal");
+
+    const grid =
+        document.getElementById("memoryGrid");
+
+    const timerEl =
+        document.getElementById("timer");
+
+    if (!startBtn) return;
+
+    const emojis = ["🍕", "🍔", "🍟"];
+
+    let cards = [...emojis, ...emojis];
+
+    let firstCard = null;
+    let secondCard = null;
+
+    let lockBoard = false;
+
+    let matches = 0;
+
+    let timer = 10;
+
+    let countdown;
+
+    // ================= START GAME =================
+
+    startBtn.addEventListener("click", () => {
+
+        modal.classList.add("active");
+
+        startGame();
+
+    });
+
+    // ================= CLOSE GAME =================
+
+    closeBtn.addEventListener("click", () => {
+
+        modal.classList.remove("active");
+
+        clearInterval(countdown);
+
+    });
+
+    // ================= START FUNCTION =================
+
+    function startGame() {
+
+        grid.innerHTML = "";
+
+        matches = 0;
+
+        timer = 10;
+
+        timerEl.textContent = timer;
+
+        cards.sort(() => 0.5 - Math.random());
+
+        cards.forEach(emoji => {
+
+            const card =
+                document.createElement("div");
+
+            card.classList.add("memory-card");
+
+            card.dataset.emoji = emoji;
+
+            card.innerHTML = emoji;
+
+            card.addEventListener(
+                "click",
+                flipCard
+            );
+
+            grid.appendChild(card);
+
+        });
+
+        clearInterval(countdown);
+
+        countdown = setInterval(() => {
+
+            timer--;
+
+            timerEl.textContent = timer;
+
+            if (timer <= 0) {
+
+                clearInterval(countdown);
+
+                showToast(
+                    "⏰ Time Over!",
+                    "error"
+                );
+
+            }
+
+        }, 1000);
+
+    }
+
+    // ================= FLIP CARD =================
+
+    function flipCard() {
+
+        if (
+            lockBoard ||
+            this === firstCard ||
+            this.classList.contains("matched")
+        ) {
+            return;
+        }
+
+        this.classList.add("flipped");
+
+        if (!firstCard) {
+
+            firstCard = this;
+
+            return;
+
+        }
+
+        secondCard = this;
+
+        checkMatch();
+
+    }
+
+    // ================= CHECK MATCH =================
+
+    function checkMatch() {
+
+        const isMatch =
+            firstCard.dataset.emoji ===
+            secondCard.dataset.emoji;
+
+        if (isMatch) {
+
+            firstCard.classList.add("matched");
+
+            secondCard.classList.add("matched");
+
+            matches++;
+
+            resetBoard();
+
+            // WIN CONDITION
+            if (matches === 3) {
+
+                clearInterval(countdown);
+
+                // SAVE DISCOUNT
+                localStorage.setItem(
+                    "discountCoupon",
+                    "CAFE10"
+                );
+
+                showToast(
+                    "🎉 You Won 10% OFF!",
+                    "success"
+                );
+
+            }
+
+        } else {
+
+            lockBoard = true;
+
+            setTimeout(() => {
+
+                firstCard.classList.remove(
+                    "flipped"
+                );
+
+                secondCard.classList.remove(
+                    "flipped"
+                );
+
+                resetBoard();
+
+            }, 800);
+
+        }
+
+    }
+
+    // ================= RESET =================
+
+    function resetBoard() {
+
+        [firstCard, secondCard] = [null, null];
+
+        lockBoard = false;
+
+    }
+
+});
