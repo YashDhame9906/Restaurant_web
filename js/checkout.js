@@ -13,24 +13,64 @@ const checkoutForm = document.getElementById('checkoutForm');
 // CALCULATE TOTAL PRICE
 // ======================================
 function calculateTotal() {
+
     let total = 0;
 
     cart.forEach(item => {
+
         total += item.price * (item.quantity || 1);
+
     });
 
-    return total;
-}
+    // ======================
+    // APPLY DISCOUNT
+    // ======================
 
+    const coupon =
+        localStorage.getItem("discountCoupon");
+
+    if (coupon === "CAFE10") {
+
+        total = total - (total * 0.10);
+
+    }
+
+    return Math.round(total);
+
+}
 // ======================================
 // DISPLAY TOTAL
 // ======================================
 function updateCheckoutTotal() {
+
     const total = calculateTotal();
 
     if (checkoutTotal) {
+
         checkoutTotal.textContent = total;
+
     }
+
+    // ======================
+    // SHOW COUPON MESSAGE
+    // ======================
+
+    const couponMessage =
+        document.getElementById("couponMessage");
+
+    const coupon =
+        localStorage.getItem("discountCoupon");
+
+    if (
+        couponMessage &&
+        coupon === "CAFE10"
+    ) {
+
+        couponMessage.innerHTML =
+            "🎉 Coupon Applied: <strong>CAFE10</strong> (10% OFF)";
+
+    }
+
 }
 
 // ======================================

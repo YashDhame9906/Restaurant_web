@@ -1,83 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Checkout | Cafe-Ruu</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Existing Global CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-
-    <!-- Checkout Page CSS -->
     <link rel="stylesheet" href="css/checkout.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="checkout-box">
-            <h1>Checkout</h1>
+    <!-- ================= CHECKOUT SECTION ================= -->
 
-            <form id="checkoutForm">
-                <div class="form-group">
-    <label for="email">Email Address</label>
-    <input
-        type="email"
-        id="email"
-        required
-        placeholder="Enter your email"
-    >
-</div>
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
+    <section class="checkout-section">
+
+        <div class="container">
+
+            <div class="checkout-box">
+
+                <h1 class="section-title">
+                    Checkout
+                </h1>
+
+                <!-- ================= TOTAL ================= -->
+
+                <div class="checkout-total-box">
+
+                    <h3>
+                        Total:
+                        ₹<span id="checkoutTotal">0</span>
+                    </h3>
+
+                    <!-- Coupon Message -->
+                    <p id="couponMessage"></p>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
-                </div>
+                <!-- ================= CHECKOUT FORM ================= -->
 
-                <div class="form-group">
-                    <label for="address">Delivery Address</label>
-                    <textarea id="address" rows="4" required></textarea>
-                </div>
+                <form id="checkoutForm">
 
-                <div class="form-group">
-                    <label for="payment">Payment Method</label>
-                    <select id="payment" required>
-                        <option value="">Select Payment Method</option>
-                        <option value="Cash on Delivery">Cash on Delivery</option>
-                        <option value="UPI">UPI</option>
-                        <option value="Credit/Debit Card">Credit/Debit Card</option>
-                    </select>
-                </div>
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label>Full Name</label>
 
-                <button type="submit" class="btn">Place Order</button>
-            </form>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required>
+                    </div>
 
-            <div id="successMessage">
-                  Your order has been placed successfully!
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label>Phone Number</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter your phone number"
+                            required>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+
+                        <textarea
+                            id="address"
+                            rows="4"
+                            placeholder="Enter your address"
+                            required></textarea>
+                    </div>
+
+                    <!-- Payment -->
+                    <div class="form-group">
+                        <label>Payment Method</label>
+
+                        <select id="payment" required>
+
+                            <option value="">
+                                Select Payment Method
+                            </option>
+
+                            <option value="Cash on Delivery">
+                                Cash on Delivery
+                            </option>
+
+                            <option value="UPI">
+                                UPI
+                            </option>
+
+                            <option value="Credit/Debit Card">
+                                Credit/Debit Card
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <!-- Button -->
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Place Order
+
+                    </button>
+
+                </form>
+
             </div>
+
         </div>
-    </div>
 
-    <!-- EmailJS Library -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    </section>
 
-<!-- Initialize EmailJS -->
-<script>
-    emailjs.init({
-        publicKey: "kmeR470t-k3eQpZHl"
-    });
-</script>
+    <!-- ================= TOAST ================= -->
 
-<!-- Your Checkout JS -->
-<script src="js/checkout.js"></script>
-<div id="toast" class="toast"></div>
+    <div id="toast" class="toast"></div>
+
+    <!-- ================= EMAILJS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        emailjs.init({
+            publicKey: "kmeR470t-k3eQpZHl"
+        });
+    </script>
+
+    <!-- ================= JS FILE ================= -->
+
+    <script src="js/checkout.js"></script>
+
 </body>
+
 </html>

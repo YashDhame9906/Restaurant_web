@@ -777,3 +777,68 @@ footer {
     background: var(--primary);
     color: #fff;
 }
+/* ================= MEMORY GAME ================= */
+
+.memory-game-section {
+    text-align: center;
+    background: #fff8f0;
+    padding: 80px 0;
+}
+
+.game-box {
+    max-width: 600px;
+    margin: auto;
+}
+
+.game-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.game-modal.active {
+    display: flex;
+}
+
+.game-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.memory-card {
+    height: 100px;
+    background: #ff6b35;
+    border-radius: 15px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: transparent;
+    transition: 0.3s;
+}
+
+.memory-card.flipped {
+    background: #fff3e6;
+    color: #000;
+}
+
+.memory-card.matched {
+    background: #4caf50;
+    color: #fff;
+}
