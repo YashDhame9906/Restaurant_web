@@ -1,6 +1,5 @@
 #  Cafe-Ruu - Online Restaurant Website
 ---
-![](https://komarev.com/ghpvc/?username=YashDhame9906)
 🔗 Live Demo: https://caferuu.netlify.app/
 ---
 
@@ -73,7 +72,7 @@ Using EmailJS:
 ## 📁 Project Structure
 
 ```text
-FoodieHub/
+Cafe-Ruu/
 │── index.html
 │── menu.html
 │── cart.html
@@ -94,11 +93,7 @@ FoodieHub/
 │   └── checkout.js
 │
 └── images/
-    ├── hero.jpg
-    ├── pizza.jpg
-    ├── burger.jpg
-    ├── pasta.jpg
-    └── ...
+
 ```
 
 ---
@@ -164,7 +159,8 @@ The project uses browser LocalStorage to store:
 ---
 
 ##  Screenshots
-<img width="1897" height="1027" alt="image" src="https://github.com/user-attachments/assets/613f98c7-2ca3-4e64-bb73-402bd1a31a04" />
+<img width="1888" height="1017" alt="image" src="https://github.com/user-attachments/assets/3206c1bd-6a03-4002-8ee4-aebd130a3861" />
+
 
 
 
